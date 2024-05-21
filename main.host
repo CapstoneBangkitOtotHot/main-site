@@ -1,0 +1,26 @@
+# Nginx configuration file
+
+server {
+    server_name bangkit-c241-ps005.site;
+
+    location / {
+        return 301 https://www.bangkit-c241-ps005.site$request_uri;
+    }
+
+    listen 80;
+}
+
+server {
+    server_name www.bangkit-c241-ps005.site;
+
+    location / {
+        alias /etc/mainsite;
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ /\.git {
+        deny all;
+    }
+
+    listen 80;
+}
