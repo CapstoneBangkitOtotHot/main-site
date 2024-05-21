@@ -12,10 +12,10 @@ server {
 
 server {
     server_name www.bangkit-c241-ps005.site;
+    root /etc/mainsite;
 
     location / {
-        alias /etc/mainsite;
-        try_files $uri $uri/ =404;
+        index index.html;
     }
 
     location ~ /\.git {
